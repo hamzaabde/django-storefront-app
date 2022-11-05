@@ -1,0 +1,36 @@
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand is-size-4">
+      <a class="navbar-item" href="{% url 'base-home' %}">
+        <strong>StoreFront</strong>
+      </a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        {% if not request.user.is_anonymous %}
+        <div class="navbar-menu">
+          {% if cart_quantity %}
+          <a href="#" class="button is-black is-rounded">
+            {{cart_quantity}}
+          </a>
+          {% endif %}
+          <a href="#" class="navbar-item has-text-primary-dark">{{request.user}}</a>
+          <a class="navbar-item" href="{% url 'base-logout' %}">
+            logout
+          </a>
+        </div>
+
+        {% else %}
+        <div class="buttons">
+          <a class="button is-primary" href="{% url 'base-register' %}">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-secondary" href="{% url 'base-login' %}">
+            Login
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block navbar %}
+
+{% endblock navbar %}
+
+{% block content %}
+<div class="container">
+  <div class="columns hero is-fullheight">
+    <div class="column columns is-vcentered is-centered">
+      <div class="column is-one-third">
+        <div class="box has-background-light">
+          <form action="{% url 'base-login' %}" method="POST">
+            {% csrf_token %}
+            <div class="field">
+              <label for="username" class="label">Enter username</label>
+              <div class="control">
+                <input type="text" class="input" id="username" name="username">
+              </div>
+            </div>
+            <div class="field">
+              <label for="password" class="label">Enter password</label>
+              <div class="control">
+                <input type="password" class="input" id="password" name="password">
+              </div>
+            </div>
+            <div class="field mt-6">
+              <div class="control">
+                <button class="button is-primary is-fullwidth" type="submit">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

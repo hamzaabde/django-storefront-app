@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+<div class="container">
+  <h2 class="is-size-2 mb-5">Products</h2>
+  <div class="grid container mb-6">
+    {% for product in products %}
+    <a href="{% url 'base-product' product.id %}">
+      <div class="card">
+        <div class="card-image image image-card">
+          <img loading="lazy" class="image" src="{{product.image}}" alt="{{product.name}}">
+        </div>
+        <div class="card-content">
+          <div class="is-flex is-flex-direction-column">
+            <strong>{{product.name}}</strong>
+            <span>$ {{product.price}}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

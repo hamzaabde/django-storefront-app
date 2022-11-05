@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{product.name|title}} | {{product.description|title}}</title>
+{% endblock title %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}
+<div class="container">
+  <div class="columns is-centered mt-6">
+    <div class="columns column is-full">
+      <div class="column box is-3by2">
+        <img class="image is-fullwidth" src="{{product.image}}" alt="{{product}}">
+      </div>
+      <div class="column is-1"></div>
+      <div class="column is-flex is-flex-direction-column">
+        <div class="block">
+          <h1 class="title">{{product}}</h1>
+          <p class="subtitle">{{product.description|capfirst}}</p>
+        </div>
+        <del class="is-striked">$ {{product.price|floatformat}}</del>
+        <div class="level">
+          <div class="level-left">
+            <strong class="level-item is-justify-self-end is-size-4 has-text-weight-semibold">$
+              {{final_price|floatformat}}
+            </strong>
+            <div class="tag is-medium is-danger is-light">{{discount|floatformat}}% OFF</div>
+          </div>
+        </div>
+        <a href="{% url 'base-cart' product.id %}" class="button is-medium is-primary is-flex-j">Add to cart</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
